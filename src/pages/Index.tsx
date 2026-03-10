@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Bot, Sparkles } from "lucide-react";
+import { Bot, Plus, Sparkles } from "lucide-react";
 import { ChatMessage } from "@/components/ChatMessage";
 import { ChatInput } from "@/components/ChatInput";
 import { Message, streamChat } from "@/lib/chat";
