@@ -1,4 +1,3 @@
-// v3 - Lovable AI Gateway
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 const corsHeaders = {
@@ -19,8 +18,6 @@ serve(async (req: Request) => {
     if (!apiKey) {
       throw new Error("LOVABLE_API_KEY is not configured");
     }
-
-    console.log("Using Lovable AI Gateway v3");
 
     const res = await fetch(
       "https://ai.gateway.lovable.dev/v1/chat/completions",
@@ -46,7 +43,7 @@ serve(async (req: Request) => {
 
     if (!res.ok) {
       const body = await res.text();
-      console.error("Gateway response error:", res.status, body);
+      console.error("Gateway error:", res.status, body);
 
       if (res.status === 429) {
         return new Response(
