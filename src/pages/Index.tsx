@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Bot, Sparkles } from "lucide-react";
+import { Bot, Plus, Sparkles } from "lucide-react";
 import { ChatMessage } from "@/components/ChatMessage";
 import { ChatInput } from "@/components/ChatInput";
 import { Message, streamChat } from "@/lib/chat";
@@ -51,15 +51,24 @@ const Index = () => {
   return (
     <div className="flex h-screen flex-col bg-background">
       {/* Header */}
-      <header className="flex items-center gap-3 border-b border-border px-6 py-4">
-        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/20">
-          <Sparkles className="h-5 w-5 text-primary" />
-        </div>
-        <div>
-          <h1 className="text-lg font-semibold text-foreground">Gemini AI Dashboard</h1>
-          <p className="text-xs text-muted-foreground">Powered by Google Gemini</p>
-        </div>
-      </header>
+       <header className="flex items-center gap-3 border-b border-border px-6 py-4">
+         <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/20">
+           <Sparkles className="h-5 w-5 text-primary" />
+         </div>
+         <div className="flex-1">
+           <h1 className="text-lg font-semibold text-foreground">Gemini AI Dashboard</h1>
+           <p className="text-xs text-muted-foreground">Powered by Google Gemini</p>
+         </div>
+         {messages.length > 0 && (
+           <button
+             onClick={() => { setMessages([]); setIsLoading(false); }}
+             className="flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+           >
+             <Plus className="h-4 w-4" />
+             New Chat
+           </button>
+         )}
+       </header>
 
       {/* Messages */}
       <div ref={scrollRef} className="flex-1 overflow-y-auto">
